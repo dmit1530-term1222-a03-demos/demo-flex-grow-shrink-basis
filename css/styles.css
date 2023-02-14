@@ -1,0 +1,205 @@
+/* Colour Palette
+Red    #e24c3b
+White  #fbf3ef
+Blue   #0088e0
+*/
+
+:root {
+  --red: #e24c3b;
+  --white: #fff;
+  --off-white: #fbf3ef;
+  --blue: #0088e0;
+  --charcoal: #222;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background: url('../img/pole-closeup-mobile.webp') center / cover no-repeat;
+  text-align: center;
+  color: var(--white);
+}
+
+h2 {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  font-family: 'Arvo', serif;
+}
+
+/** nav */
+nav ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav ul li:not(.logo) {
+  font-size: 1.5rem;
+}
+
+nav ul li { padding: 1rem; }
+
+nav ul li a {
+  display: block;
+  color: var(--charcoal);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+
+/** svg **/
+nav ul svg {
+  width: 5rem;
+  height: auto;
+  margin-top: 1rem;
+}
+
+nav ul svg path {
+  fill: var(--charcoal);
+}
+/** This is a style that we only want to use in the mobile view 
+    want in the mobile view.
+   It's easier to use a max-width condition here than
+   to unset everything down below. */
+@media screen and (max-width: 925px) {
+  nav {
+    background-color: var(--off-white);
+  }
+  nav ul li:nth-child(3),
+  nav ul li:nth-child(5) {
+    background-color: var(--red);
+  }
+  nav ul li:nth-child(2) {
+    background-color: var(--blue);
+  }
+}/* //end of max-width query **/
+
+.logo {
+  order: -1;
+}
+.logo h1 {
+  padding: 0;
+}
+
+/** main content **/
+main > h2 {
+    font-size: 4rem;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 3rem 0;
+    letter-spacing: 0.1rem;
+    text-shadow: 2px 2px var(--charcoal);
+}
+
+section {
+  margin: 0 auto;
+}
+
+.inner-container {
+  padding: 0 1rem;
+}
+
+.col {
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 0.5rem;
+  border: 0.1rem solid rgba(255,255,255, 0.5);
+  padding: 2rem;
+  margin: 1rem auto;
+}
+
+.col img {
+  max-width: 4.5rem;
+  margin: 1rem auto;
+}
+
+.col p a {
+  background-color: var(--red);
+  color: var(--off-white);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.col p a:hover {
+  text-decoration: underline;
+}
+
+
+@media screen and (min-width: 926px) {
+  body {
+    background: url('../img/pole-closeup.webp') center / cover no-repeat;
+  }
+
+  nav{ background-color: rgba(0,0,0,0.6); }
+
+  nav ul {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  nav ul li {
+    flex: 1 1 25%;
+  }
+
+  nav ul li a,
+   /* This grabs every element inside of the barber pole and fills it with the off-white colour. */
+  .logo a svg *{
+    color: var(--off-white);
+    fill: var(--off-white);
+  }
+  .logo {
+    order: 0;
+    flex: 1 0 50%
+  }
+  .logo svg {
+    margin: 0;
+  }
+  /* This is the total viewport height minus the height of the navigation in the desktop layout. */
+  main {
+    min-height:(100vh - 10.56rem)
+  }
+
+  .inner-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Let's have two cards per row maximum. */
+  .col {
+    max-width: calc(100% / 2 - 2rem);
+    margin: 1rem;
+  }
+ /* These columns have a little more copy than the others, so let's give them a little more room on their rows. */
+  .grow {
+    flex: 1 0 65%;
+  }
+  /* And, conversely, we'll make the others squish a little more. */
+  .shrink {
+    flex: 0 1 35%;
+  }
+
+  /* Note: See how the flex-basis property (the last value in the flex shorthand property) overrides the max-width property? */
+
+}
+
+/* Finally, let's restrict our overall widths. */
+@media screen and (min-width: 1600px) {
+  nav ul,
+  .inner-container {
+    max-width: 96.25rem; /**1540px**/
+    margin: auto;
+  }
+}
